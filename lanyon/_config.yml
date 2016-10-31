@@ -1,0 +1,17 @@
+
+
+# Setup
+title:               東億事件簿
+tagline:             東億紙廠空汙排放事件，相關資訊匯整
+description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+url:                 https://junsuwhy.github.io/tongyi-lanyon/
+baseurl:             '/tongyi-lanyon'
+
+# About/contact
+author:
+  name:              Mark Otto
+  url:               https://twitter.com/mdo
+  email:             markdotto@gmail.com
+
+# Custom vars
+version:             1.0.0

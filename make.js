@@ -52,22 +52,23 @@ function load_pages(){
         // This function (`page`) will get called for each page of records.
     
         records.forEach(function(record) {
-            var obj = {};
-            obj.name = record.get('Name');
-            obj.body = record.get('內文');
-            obj.parentObj = record.get('上層內容');
-            obj.path = record.get('路徑');
-            obj.tags = record.get('tags');
-            obj.is_index = record.get('打勾是目錄，不勾是頁面');
-            obj.children = [];
-            obj.id = record.id;
+            if( record.get('發佈')){
+                var obj = {};
+                obj.name = record.get('Name');
+                obj.body = record.get('內文');
+                obj.parentObj = record.get('上層內容');
+                obj.path = record.get('路徑');
+                obj.tags = record.get('tags');
+                obj.order = record.get('順序');
+                obj.is_index = record.get('打勾是目錄，不勾是頁面');
+                obj.children = [];
+                obj.id = record.id;
+                
+                // arr_name.push(obj.name);
+                contents[obj.id] = obj;
+                list_all_contents.push(obj);
+            }
             
-            // arr_name.push(obj.name);
-            contents[obj.id] = obj;
-            list_all_contents.push(obj);
-            
-            // console.log('Retrieved ', record.get('Name'));
-            // console.log(record);
         });
     
         // To fetch the next page of records, call `fetchNextPage`.
@@ -89,6 +90,11 @@ function start_process() {
     // console.log(arr_content);
     
     // console.log(arr_content);
+    list_all_contents.sort(function(a,b){
+        var a_order = (a.order == undefined)?0:a.order;
+        var b_order = (b.order == undefined)?0:b.order;
+        return a_order - b_order;
+    })
     list_all_contents.forEach(function(obj){
         obj.is_created_finished = false;
         if(obj.parentObj !== undefined){
@@ -111,31 +117,6 @@ function start_process() {
     });
     
     setTimeout(after,2000);
-    
-    // var i = 0;
-    
-    // while(!is_created_finished){
-        
-    //     i++;
-        
-    //     is_created_finished == true;
-    //     list_all_contents.forEach(function(obj){
-    //         if(!obj.is_created_finished){
-    //             // delete contents[obj.id];
-    //             is_created_finished = false;
-    //             console.log(obj.name);
-    //         }
-    //     });
-        
-    //     if(is_created_finished){
-    //         after()
-    //     }
-    //     if(i>=2){
-    //         break;
-    //     }
-    // }
-    
-    // after();
     
     
 }
@@ -171,7 +152,7 @@ function create_page(obj,folder_name) {
         data += '---\n';
          
          
-        data += obj.body;
+        data += (obj.body == undefined)?'':obj.body;
         data += '\n';
         // console.log(obj.name);
         // console.log('tongyi_content' + folder + path + '.md');
@@ -201,7 +182,7 @@ function create_page(obj,folder_name) {
                 return a.date_code - b.date_code;
             })
             this_sources.forEach(function(source){
-                data+=`- ${source.date} - [${source.title} - ${source.from}](${source.url})\n`;
+                data+=`- [${source.title} - ${source.from}](${source.url})\n  *${source.date}*\n`;
             })
         }
         
@@ -228,18 +209,6 @@ function create_page(obj,folder_name) {
         
         obj.is_created_finished = true;
     });
-    
-    
-    
-   
-    
-    /*
-    fs.writeFile('tongyi_content/' + path + obj.path + '.md', obj, function (err) {
-      if (err) return console.log(err);
-      console.log('Hello World > helloworld.txt');
-    });
-    */
-    
 }
 
 function create_menu(obj,folder_name) {
@@ -296,60 +265,5 @@ function after(){
         });
         
     });
-    
-    
-    
-    // var ls = exec("ls tongyi_content/ -l", function(err, stdout, stderr) {
-    //   if (err) {
-    //     // should have err.code here?  
-    //   }
-    //   console.log(stdout);
-    // });
-    
-    // ls.on('exit', function (code) {
-    //   // exit code is code
-    //   console.log(code);
-    // });
-    
-    // var cp = exec("cp tongyi_content/* tongyi/ -r", function(err, stdout, stderr) {
-    //   if (err) {
-    //     // should have err.code here?  
-    //   }
-    //   console.log(stdout);
-    // });
-    
-    // cp.on('exit', function (code) {
-    //   // exit code is code
-    //   console.log(code);
-    // });
-    
-    // var ls = exec("ls tongyi/_post/ -l", function(err, stdout, stderr) {
-    //   if (err) {
-    //     // should have err.code here?  
-    //   }
-    //   console.log(stdout);
-    // });
-    
-    // ls.on('exit', function (code) {
-    //   // exit code is code
-    //   console.log(code);
-    // });
-    
-    // var hugo = exec("cd tongyi && ../hugo -t material-design", function(err, stdout, stderr) {
-    //   if (err) {
-    //     // should have err.code here?  
-    //   }
-    //   console.log(stdout);
-    // });
-        
-    // hugo.on('exit', function (code) {
-    //   // exit code is code
-    //   console.log(code);
-      
-    // });
-    
-    
-    
-    
     
 }
