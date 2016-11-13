@@ -1,0 +1,16 @@
+baseurl = "https://make-site-from-airtable-junsuwhy.c9users.io/"
+title = "東億事件簿"
+languageCode = "zh-hant"
+theme = "hugo-steam-theme"
+
+paginate = 10
+
+[params]
+
+  title = "東億事件簿"
+  # subtitle = "a minimal theme for ~~Ghost~~ Hugo"
+  copyright = "Released under the MIT license."
+
+  # You can choose between green, orange, red and blue.
+  themeColor = "green"
+  
