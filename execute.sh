@@ -1,5 +1,6 @@
 node make.js
-cp tongyi_content/* $THEME_NAME/ -r
-cd $THEME_NAME
-jekyll build
-jekyll serve --host $IP --port $PORT --baseurl ''
+rm tongyi/content/* -rf
+cp tongyi_content/* tongyi/content/ -r
+cd tongyi
+../hugo -t $THEME_NAME
+node ../server.js

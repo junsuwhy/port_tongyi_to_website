@@ -11,7 +11,7 @@ var contents = {};
 var list_all_contents = [];
 var list_all_source = [];
 var menu = '';
-var menu_file = `${process.env.THEME_NAME}/_data/menu.yaml`
+var menu_file = `tongyi/data/menu.yaml`
 // var arr_name = [];
 
 var is_created_finished = false;
@@ -108,6 +108,7 @@ function start_process() {
     });
     // console.log(contents);
     
+    menu = 'data: \n'
     list_all_contents.forEach(function(obj){
         if(obj.parentObj == undefined){
             // delete contents[obj.id];
@@ -148,7 +149,10 @@ function create_page(obj,folder_name) {
         var data = '';
         data += '---\n';
         data += `title: "${obj.name}"\n`;
-        data += `layout: default\n`;
+        if(obj.name == '首頁'){
+            data += `type: "index"\n`;
+        }
+        // data += `layout: default\n`;
         data += '---\n';
          
          
@@ -223,15 +227,15 @@ function create_menu(obj,folder_name) {
         // console.log(i);
         indent += "    ";
     }
-    return_menu += (indent + `- title: "${obj.name}"\n`);
+    return_menu += (indent + `  - title: "${obj.name}"\n`);
     var path_html = folder + path+'.html';
-    return_menu += (indent + `  url: "${path_html}"\n`);
+    return_menu += (indent + `    url: "${path_html}"\n`);
     
     if(obj.is_index && obj.children.length > 0){
-        return_menu += indent + `  children:\n`;
+        return_menu += indent + `    children:\n`;
     }
     
-    return_menu += '\n';
+    // return_menu += '\n';
     
     if( obj.children !== undefined && obj.is_index !== undefined){
         // Has children page
