@@ -217,7 +217,7 @@ function create_page(obj,folder_name) {
 
 function create_menu(obj,folder_name) {
     var folder = (folder_name == '')?'/':(folder_name+'/');
-    var path = (obj.path == undefined)?'index':obj.path;
+    var path = (obj.path == undefined)?'':obj.path;
     var filename = 'tongyi_content' + folder + path + '.md';
     
     var level = folder.match(/\//g).length;
@@ -228,7 +228,7 @@ function create_menu(obj,folder_name) {
         indent += "    ";
     }
     return_menu += (indent + `  - title: "${obj.name}"\n`);
-    var path_html = folder + path+'.html';
+    var path_html = folder + path;
     return_menu += (indent + `    url: "${path_html}"\n`);
     
     if(obj.is_index && obj.children.length > 0){
