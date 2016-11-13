@@ -1,7 +1,6 @@
 if [ -z $NO_SYNC_AIRTABLE ]; then
     node make.js
-    rm tongyi/content/* -rf
-    cp tongyi_content/* tongyi/content/ -r  
+    cp tongyi_content/* tongyi/content/ -rf
 fi
 cd tongyi
 ../hugo -t $THEME_NAME

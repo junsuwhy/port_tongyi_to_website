@@ -11,7 +11,8 @@ var contents = {};
 var list_all_contents = [];
 var list_all_source = [];
 var menu = '';
-var menu_file = `tongyi/data/menu.yaml`
+var menu_file = `tongyi/data/menu.yaml`;
+var is_index_created = false;
 // var arr_name = [];
 
 var is_created_finished = false;
@@ -149,8 +150,9 @@ function create_page(obj,folder_name) {
         var data = '';
         data += '---\n';
         data += `title: "${obj.name}"\n`;
-        if(obj.name == '首頁'){
+        if(!is_index_created && path == 'index'){
             data += `type: "index"\n`;
+            is_index_created = true;
         }
         // data += `layout: default\n`;
         data += '---\n';
