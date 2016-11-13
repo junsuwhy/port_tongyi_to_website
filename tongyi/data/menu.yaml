@@ -1,5 +1,5 @@
 data: 
-  - title: "首頁"
+  - title: "事件簡介"
     url: "/"
   - title: "手段"
     url: "/means"
