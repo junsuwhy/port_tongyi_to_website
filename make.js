@@ -51,7 +51,8 @@ function load_pages(){
     }).eachPage(function page(records, fetchNextPage) {
     
         // This function (`page`) will get called for each page of records.
-    
+
+        var no = 0;
         records.forEach(function(record) {
             if( record.get('發佈')){
                 var obj = {};
@@ -64,6 +65,8 @@ function load_pages(){
                 obj.is_index = record.get('打勾是目錄，不勾是頁面');
                 obj.children = [];
                 obj.id = record.id;
+                obj.no = no;
+                no++;
                 
                 // arr_name.push(obj.name);
                 contents[obj.id] = obj;
@@ -150,9 +153,9 @@ function create_page(obj,folder_name) {
         var data = '';
         data += '---\n';
         data += `title: "${obj.name}"\n`;
-        if(!is_index_created && path == 'index'){
+        if(obj.no == 0){
             data += `type: "index"\n`;
-            is_index_created = true;
+            // is_index_created = true;
         }
         // data += `layout: default\n`;
         data += '---\n';
@@ -168,7 +171,7 @@ function create_page(obj,folder_name) {
         // if(obj.tags !== undefined && obj.name == '反空汙自救會'){
         if(obj.tags !== undefined){
             data += '\n';
-            data += '# 相關新聞連結\n';
+            data += '## 相關新聞連結\n';
             
             var this_sources = [];
             obj.tags.forEach(function(tag){
@@ -192,24 +195,34 @@ function create_page(obj,folder_name) {
             })
         }
         
-        // 產生子頁面
-        if( obj.children !== undefined && obj.is_index !== undefined){
-            // Has children page
-            obj.children.forEach(function( child){
-                // console.log(folder_name+'/'+path);
-                create_page(child,folder+path);
-            });
-        }else if(obj.children.length > 0 ){
-            // Has children section.
-            obj.children.forEach(function( child){
-                // console.log(folder_name+'/'+path);
-                data += '\n';
-                data += `# ${child.name}\n\n`;
-                data += `${child.body}\n`;
-                child.is_created_finished = true;
-            });
-            
+        // 產生子頁面 & children link
+        if(obj.children !== undefined){
+            if( obj.is_index !== undefined){
+                // Has children page
+                var links = '';
+                obj.children.forEach(function( child){
+                    // console.log(folder_name+'/'+path);
+                    create_page(child,folder+path);
+                    links += `- [${child.name}](${folder}${path}/${child.path})\n`;
+                });
+
+            }else{
+                // Has children section.
+                obj.children.forEach(function( child){
+                    // console.log(folder_name+'/'+path);
+                    data += '\n';
+                    data += `## ${child.name}\n\n`;
+                    data += `${child.body}\n`;
+                    child.is_created_finished = true;
+                });
+            }
+
+            if(links && (obj.no !== 0)){
+                data += `## ${obj.name}\n`;
+                data += links;
+            }
         }
+        
         fs.writeFile(filename, data);
         
         
