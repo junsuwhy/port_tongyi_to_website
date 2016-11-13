@@ -1,0 +1,12 @@
+<header id="site-head">
+	
+	{{ with .Site.Params.title }}
+	<a href="{{ $.Site.BaseURL }}">
+		<img src="/img/landscape_256.png" class="tongyi-logo"></img>
+		<h1 class="blog-title">{{ . | markdownify }}</h1>
+	</a>
+	{{ end }}
+	{{ with .Site.Params.subtitle }}
+	<h1 class="blog-subtitle">{{ . | markdownify }}</h1>
+	{{ end }}
+</header>

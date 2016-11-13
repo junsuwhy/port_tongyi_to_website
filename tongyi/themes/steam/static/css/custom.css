@@ -1,0 +1,54 @@
+img.tongyi-logo{
+    width: 96px;
+    margin: 2em auto 0;
+    display: block;
+}
+
+h1.blog-title{
+    margin-top: 5px;
+    text-align: center;
+}
+
+nav ul {
+    overflow: auto;
+}
+
+nav > ul > li{
+    position: static;
+    overflow: auto;
+}
+nav > ul > li > a:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 20px;
+    position: absolute;
+}
+nav > ul > li > ul{
+    display: none;
+    position:absolute;
+    margin-left: -0.5em;
+    max-width: 200px;
+    background: #fafafa;
+    margin-top: 0.5em;
+}
+nav > ul > li > ul ul{
+    margin-left: 1em;
+}
+nav > ul > li:hover > ul{
+    display: block;
+}
+nav.menu > ul > li > ul li {
+    display: block;
+    text-align: left;
+}
+
+nav.menu ul li ul li:last-child {
+    margin-left: 0.5em;
+}
+
+
+.content{
+    max-width: 600px;
+    margin: 0 auto;
+}

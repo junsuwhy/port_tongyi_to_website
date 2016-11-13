@@ -1,0 +1,27 @@
+<nav class="menu" role="nav">
+    <ul>
+        {{ range $.Site.Data.menu.data }}
+        	<li class="nav nav-current">
+        	    <a href="{{$.Site.Params.baseurl}}{{ .url }}">{{ .title }}</a>
+        	    {{ if .children }}
+            	    <ul>
+                	{{ range .children }}
+                	    <li class="nav nav-current">
+                	        <a href="{{ .url }}">{{ .title }}</a>
+                	        {{ if .children }}
+                        	    <ul>
+                            	{{ range .children }}
+                            	    <li class="nav nav-current">
+                            	        <a href="{{ .url }}">{{ .title }}</a>
+                            	    </li>
+                            	{{end}}
+                                </ul>
+                        	{{end}}
+                	    </li>
+                	{{end}}
+                    </ul>
+            	{{end}}
+        	</li>
+      	{{end}}
+    </ul>
+</nav>
