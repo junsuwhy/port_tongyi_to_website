@@ -52,7 +52,7 @@ function load_pages(){
     
         // This function (`page`) will get called for each page of records.
 
-        var no = 0;
+        var order = 0;
         records.forEach(function(record) {
             if( record.get('發佈')){
                 var obj = {};
@@ -61,12 +61,11 @@ function load_pages(){
                 obj.parentObj = record.get('上層內容');
                 obj.path = record.get('路徑');
                 obj.tags = record.get('tags');
-                obj.order = record.get('順序');
+                obj.order = order;
                 obj.is_index = record.get('打勾是目錄，不勾是頁面');
                 obj.children = [];
                 obj.id = record.id;
-                obj.no = no;
-                no++;
+                order++;
                 
                 // arr_name.push(obj.name);
                 contents[obj.id] = obj;
@@ -102,7 +101,9 @@ function start_process() {
     list_all_contents.forEach(function(obj){
         obj.is_created_finished = false;
         if(obj.parentObj !== undefined){
-            contents[obj.parentObj[0]].children.push(obj);
+            for (var i = obj.parentObj.length - 1; i >= 0; i--) {
+                contents[obj.parentObj[i]].children.push(obj);
+            }
         }
     });
     list_all_contents.forEach(function(obj){
@@ -153,7 +154,7 @@ function create_page(obj,folder_name) {
         var data = '';
         data += '---\n';
         data += `title: "${obj.name}"\n`;
-        if(obj.no == 0){
+        if(obj.order == 0){
             data += `type: "index"\n`;
             // is_index_created = true;
         }
@@ -217,7 +218,7 @@ function create_page(obj,folder_name) {
                 });
             }
 
-            if(links && (obj.no !== 0)){
+            if(links && (obj.order !== 0)){
                 data += `## ${obj.name}\n`;
                 data += links;
             }

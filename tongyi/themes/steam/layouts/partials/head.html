@@ -11,6 +11,12 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta property="og:title" content="{{ .Title }}"/>
+    <meta property="og:url" content="http://tongyi.today"/>
+    <meta property="og:image" content="http://tongyi.today/img/landscape_256.png"/>
+    <meta property="og:site_name" content="{{ .Title }}"/>
+    <meta property="og:description" content="{{ .Title }}"/>
+	
 
     {{ "<!-- RSS autodiscovery -->" | safeHTML }}
     {{ if .RSSlink }}
@@ -31,4 +37,5 @@
 
     {{ "<!-- Stylesheet for theme color -->" | safeHTML }}
     {{ partial (printf "themes/%s-theme" .Site.Params.themeColor) . }}
+    {{ template "_internal/google_analytics.html" . }}
 </head>

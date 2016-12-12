@@ -20,7 +20,7 @@ nav > ul > li{
 nav > ul > li > a:after {
     display: block;
     content: "";
-    width: 100%;
+    width: 200px;
     height: 20px;
     position: absolute;
 }

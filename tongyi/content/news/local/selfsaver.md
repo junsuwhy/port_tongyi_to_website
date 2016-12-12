@@ -20,9 +20,11 @@ title: "反空汙自救會"
   *2015-12-23*
 - [不堪紙廠空污 豐原居民戴口罩抗議 - 自由時報](http://news.ltn.com.tw/news/life/breakingnews/1548969)
   *2015-12-23*
+- [拒吸廢毒氣 豐原民眾發動抗議 - 台灣導報](http://www.taiwan-reports.com/?c=articles&a=show&id=77240)
+  *2015-12-23*
 - [紙業塑膠造汙染 居民拉白布條怒吼 - 聯合報](http://udn.com/news/story/9/1395783)
   *2015-12-23*
-- [拒吸廢毒氣 豐原民眾發動抗議 - 台灣導報](http://www.taiwan-reports.com/?c=articles&a=show&id=77240)
+- [紙業塑膠造汙染 居民拉白布條怒吼 - 聯合報](https://video.udn.com/news/415971)
   *2015-12-23*
 - [【更新】抗議空氣汙染　豐原人遊行表達不滿 - 蘋果日報](http://www.appledaily.com.tw/realtimenews/article/new/20160109/771216/)
   *2016-01-09*
@@ -37,6 +39,8 @@ title: "反空汙自救會"
 - [忍「東億」8年了 豐原300人反空污遊行 - 自由時報](http://news.ltn.com.tw/news/local/paper/947798)
   *2016-01-09*
 - [「豐原阿嬤」發起 台中3百人上街反空汙 - 聯合報](http://udn.com/news/story/7314/1432296-%E3%80%8C%E8%B1%90%E5%8E%9F%E9%98%BF%E5%AC%A4%E3%80%8D%E7%99%BC%E8%B5%B7-%E5%8F%B0%E4%B8%AD3%E7%99%BE%E4%BA%BA%E4%B8%8A%E8%A1%97%E5%8F%8D%E7%A9%BA%E6%B1%99)
+  *2016-01-09*
+- [豐原民眾反空汙 籲候選人表態支持 - 民視](https://youtu.be/P34YCJoRfwI)
   *2016-01-09*
 - [豐原民眾反空汙 籲候選人表態支持 - 民視](http://m.ftv.com.tw/newscontent.aspx?sno=2016109C02M1)
   *2016-01-09*
